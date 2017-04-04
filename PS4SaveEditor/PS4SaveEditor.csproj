@@ -1,0 +1,579 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{527EC19C-F3BC-4198-AD17-67E076DAE8E6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PS4SaveEditor</RootNamespace>
+    <AssemblyName>PS4SaveEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>PS4SaveEditor.ico</ApplicationIcon>
+    <StartupObject>PS3SaveEditor.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Be\Windows\Forms\BuiltInContextMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Be\Windows\Forms\ByteCollection.cs" />
+    <Compile Include="Be\Windows\Forms\BytePositionInfo.cs" />
+    <Compile Include="Be\Windows\Forms\DataBlock.cs" />
+    <Compile Include="Be\Windows\Forms\DataMap.cs" />
+    <Compile Include="Be\Windows\Forms\DefaultByteCharConverter.cs" />
+    <Compile Include="Be\Windows\Forms\DynamicByteProvider.cs" />
+    <Compile Include="Be\Windows\Forms\DynamicFileByteProvider.cs" />
+    <Compile Include="Be\Windows\Forms\EbcdicByteCharProvider.cs" />
+    <Compile Include="Be\Windows\Forms\FileByteProvider.cs" />
+    <Compile Include="Be\Windows\Forms\FileDataBlock.cs" />
+    <Compile Include="Be\Windows\Forms\HexBox.Designer.cs">
+      <DependentUpon>HexBox.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Be\Windows\Forms\HexCasing.cs" />
+    <Compile Include="Be\Windows\Forms\IByteCharConverter.cs" />
+    <Compile Include="Be\Windows\Forms\IByteProvider.cs" />
+    <Compile Include="Be\Windows\Forms\MemoryDataBlock.cs" />
+    <Compile Include="Be\Windows\Forms\NativeMethods.cs" />
+    <Compile Include="Be\Windows\Forms\Util.cs" />
+    <Compile Include="Crc32Net.cs" />
+    <Compile Include="CSUST\Data\CellBackColorEventArgs.cs" />
+    <Compile Include="CSUST\Data\CustomDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\CustomHScrollbar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\CustomVScrollbar.Designer.cs">
+      <DependentUpon>CustomVScrollbar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DGDev\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DGDev\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ICSharpCode\SharpZipLib\Checksums\Adler32.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Checksums\Crc32.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Checksums\IChecksum.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Checksums\StrangeCRC.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\CompletedFileHandler.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\DirectoryEventArgs.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\DirectoryFailureHandler.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\ExtendedPathFilter.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\FileFailureHandler.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\FileSystemScanner.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\INameTransform.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\IScanFilter.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\NameAndSizeFilter.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\NameFilter.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\PathFilter.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\ProcessDirectoryHandler.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\ProcessFileHandler.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\ProgressEventArgs.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\ProgressHandler.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\ScanEventArgs.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\ScanFailureEventArgs.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\StreamUtils.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Core\WindowsPathUtils.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Encryption\PkzipClassic.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Encryption\PkzipClassicCryptoBase.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Encryption\PkzipClassicDecryptCryptoTransform.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Encryption\PkzipClassicEncryptCryptoTransform.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Encryption\PkzipClassicManaged.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Encryption\ZipAESStream.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Encryption\ZipAESTransform.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\SharpZipBaseException.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\BaseArchiveStorage.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\CompressionMethod.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\Compression\Deflater.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\Compression\DeflaterConstants.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\Compression\DeflaterEngine.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\Compression\DeflaterHuffman.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\Compression\DeflaterPending.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\Compression\DeflateStrategy.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\Compression\Inflater.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\Compression\InflaterDynHeader.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\Compression\InflaterHuffmanTree.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\Compression\PendingBuffer.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\Compression\Streams\DeflaterOutputStream.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\Compression\Streams\InflaterInputBuffer.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\Compression\Streams\InflaterInputStream.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\Compression\Streams\OutputWindow.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\Compression\Streams\StreamManipulator.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\DescriptorData.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\DiskArchiveStorage.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\DynamicDiskDataSource.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\EncryptionAlgorithm.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\EntryPatchData.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\ExtendedUnixData.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\FastZip.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\FastZipEvents.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\FileUpdateMode.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\GeneralBitFlags.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\HostSystemID.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\IArchiveStorage.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\IDynamicDataSource.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\IEntryFactory.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\IStaticDataSource.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\ITaggedData.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\ITaggedDataFactory.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\KeysRequiredEventArgs.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\MemoryArchiveStorage.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\NTTaggedData.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\RawTaggedData.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\StaticDiskDataSource.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\TestOperation.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\TestStatus.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\TestStrategy.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\UseZip64.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\WindowsNameTransform.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\ZipConstants.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\ZipEntry.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\ZipEntryFactory.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\ZipException.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\ZipExtraData.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\ZipFile.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\ZipHelperStream.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\ZipInputStream.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\ZipNameTransform.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\ZipOutputStream.cs" />
+    <Compile Include="ICSharpCode\SharpZipLib\Zip\ZipTestResultHandler.cs" />
+    <Compile Include="Ionic\AttributesCriterion.cs" />
+    <Compile Include="Ionic\ComparisonOperator.cs" />
+    <Compile Include="Ionic\CompoundCriterion.cs" />
+    <Compile Include="Ionic\Crc\CRC32.cs" />
+    <Compile Include="Ionic\Crc\CrcCalculatorStream.cs" />
+    <Compile Include="Ionic\EnumUtil.cs" />
+    <Compile Include="Ionic\FileSelector.cs" />
+    <Compile Include="Ionic\LogicalConjunction.cs" />
+    <Compile Include="Ionic\NameCriterion.cs" />
+    <Compile Include="Ionic\SelectionCriterion.cs" />
+    <Compile Include="Ionic\SizeCriterion.cs" />
+    <Compile Include="Ionic\TimeCriterion.cs" />
+    <Compile Include="Ionic\TypeCriterion.cs" />
+    <Compile Include="Ionic\WhichTime.cs" />
+    <Compile Include="Ionic\Zip\AddOrUpdateAction.cs" />
+    <Compile Include="Ionic\Zip\AddProgressEventArgs.cs" />
+    <Compile Include="Ionic\Zip\BadCrcException.cs" />
+    <Compile Include="Ionic\Zip\BadPasswordException.cs" />
+    <Compile Include="Ionic\Zip\BadReadException.cs" />
+    <Compile Include="Ionic\Zip\BadStateException.cs" />
+    <Compile Include="Ionic\Zip\CloseDelegate.cs" />
+    <Compile Include="Ionic\Zip\ComHelper.cs" />
+    <Compile Include="Ionic\Zip\CompressionMethod.cs" />
+    <Compile Include="Ionic\Zip\CountingStream.cs" />
+    <Compile Include="Ionic\Zip\CryptoMode.cs" />
+    <Compile Include="Ionic\Zip\EncryptionAlgorithm.cs" />
+    <Compile Include="Ionic\Zip\ExtractExistingFileAction.cs" />
+    <Compile Include="Ionic\Zip\ExtractProgressEventArgs.cs" />
+    <Compile Include="Ionic\Zip\OffsetStream.cs" />
+    <Compile Include="Ionic\Zip\OpenDelegate.cs" />
+    <Compile Include="Ionic\Zip\ReadOptions.cs" />
+    <Compile Include="Ionic\Zip\ReadProgressEventArgs.cs" />
+    <Compile Include="Ionic\Zip\SaveProgressEventArgs.cs" />
+    <Compile Include="Ionic\Zip\SelfExtractorFlavor.cs" />
+    <Compile Include="Ionic\Zip\SelfExtractorSaveOptions.cs" />
+    <Compile Include="Ionic\Zip\SetCompressionCallback.cs" />
+    <Compile Include="Ionic\Zip\SfxGenerationException.cs" />
+    <Compile Include="Ionic\Zip\SharedUtilities.cs" />
+    <Compile Include="Ionic\Zip\WriteDelegate.cs" />
+    <Compile Include="Ionic\Zip\Zip64Option.cs" />
+    <Compile Include="Ionic\Zip\ZipCipherStream.cs" />
+    <Compile Include="Ionic\Zip\ZipConstants.cs" />
+    <Compile Include="Ionic\Zip\ZipContainer.cs" />
+    <Compile Include="Ionic\Zip\ZipCrypto.cs" />
+    <Compile Include="Ionic\Zip\ZipEntry.cs" />
+    <Compile Include="Ionic\Zip\ZipEntrySource.cs" />
+    <Compile Include="Ionic\Zip\ZipEntryTimestamp.cs" />
+    <Compile Include="Ionic\Zip\ZipErrorAction.cs" />
+    <Compile Include="Ionic\Zip\ZipErrorEventArgs.cs" />
+    <Compile Include="Ionic\Zip\ZipException.cs" />
+    <Compile Include="Ionic\Zip\ZipFile.cs" />
+    <Compile Include="Ionic\Zip\ZipInputStream.cs" />
+    <Compile Include="Ionic\Zip\ZipOption.cs" />
+    <Compile Include="Ionic\Zip\ZipOutput.cs" />
+    <Compile Include="Ionic\Zip\ZipOutputStream.cs" />
+    <Compile Include="Ionic\Zip\ZipProgressEventArgs.cs" />
+    <Compile Include="Ionic\Zip\ZipProgressEventType.cs" />
+    <Compile Include="Ionic\Zip\ZipSegmentedStream.cs" />
+    <Compile Include="Ionic\Zlib\Adler.cs" />
+    <Compile Include="Ionic\Zlib\BlockState.cs" />
+    <Compile Include="Ionic\Zlib\CompressionLevel.cs" />
+    <Compile Include="Ionic\Zlib\CompressionMode.cs" />
+    <Compile Include="Ionic\Zlib\CompressionStrategy.cs" />
+    <Compile Include="Ionic\Zlib\DeflateFlavor.cs" />
+    <Compile Include="Ionic\Zlib\DeflateManager.cs" />
+    <Compile Include="Ionic\Zlib\DeflateStream.cs" />
+    <Compile Include="Ionic\Zlib\FlushType.cs" />
+    <Compile Include="Ionic\Zlib\GZipStream.cs" />
+    <Compile Include="Ionic\Zlib\InflateBlocks.cs" />
+    <Compile Include="Ionic\Zlib\InflateCodes.cs" />
+    <Compile Include="Ionic\Zlib\InflateManager.cs" />
+    <Compile Include="Ionic\Zlib\InfTree.cs" />
+    <Compile Include="Ionic\Zlib\InternalConstants.cs" />
+    <Compile Include="Ionic\Zlib\InternalInflateConstants.cs" />
+    <Compile Include="Ionic\Zlib\ParallelDeflateOutputStream.cs" />
+    <Compile Include="Ionic\Zlib\SharedUtils.cs" />
+    <Compile Include="Ionic\Zlib\StaticTree.cs" />
+    <Compile Include="Ionic\Zlib\Tree.cs" />
+    <Compile Include="Ionic\Zlib\WorkItem.cs" />
+    <Compile Include="Ionic\Zlib\ZlibBaseStream.cs" />
+    <Compile Include="Ionic\Zlib\ZlibCodec.cs" />
+    <Compile Include="Ionic\Zlib\ZlibConstants.cs" />
+    <Compile Include="Ionic\Zlib\ZlibException.cs" />
+    <Compile Include="Ionic\Zlib\ZlibStream.cs" />
+    <Compile Include="Ionic\Zlib\ZlibStreamFlavor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PS3SaveEditor\AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\AboutBox1.Designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\AddCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\AddCode.Designer.cs">
+      <DependentUpon>AddCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\AdvancedEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\AdvancedEdit.Designer.cs">
+      <DependentUpon>AdvancedEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\AdvancedSaveUploaderForEncrypt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\AdvancedSaveUploaderForEncrypt.Designer.cs">
+      <DependentUpon>AdvancedSaveUploaderForEncrypt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\alias.cs" />
+    <Compile Include="PS3SaveEditor\aliases.cs" />
+    <Compile Include="PS3SaveEditor\BackupItem.cs" />
+    <Compile Include="PS3SaveEditor\CancelPSNIDs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\CancelPSNIDs.Designer.cs">
+      <DependentUpon>CancelPSNIDs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\cheat.cs" />
+    <Compile Include="PS3SaveEditor\cheats.cs" />
+    <Compile Include="PS3SaveEditor\ChooseBackup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\ChooseBackup.Designer.cs">
+      <DependentUpon>ChooseBackup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\container.cs" />
+    <Compile Include="PS3SaveEditor\containers.cs" />
+    <Compile Include="PS3SaveEditor\CustomGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\CustomScrollbar\Resource.Designer.cs">
+      <DependentUpon>Resource.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="PS3SaveEditor\DiffResults.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\DiffResults.Designer.cs">
+      <DependentUpon>DiffResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\DownloadFinishEventArgs.cs" />
+    <Compile Include="PS3SaveEditor\file.cs" />
+    <Compile Include="PS3SaveEditor\files.cs" />
+    <Compile Include="PS3SaveEditor\game.cs" />
+    <Compile Include="PS3SaveEditor\GameListDownloader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\GameListDownloader.Designer.cs">
+      <DependentUpon>GameListDownloader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\games.cs" />
+    <Compile Include="PS3SaveEditor\Goto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\Goto.Designer.cs">
+      <DependentUpon>Goto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\group.cs" />
+    <Compile Include="PS3SaveEditor\internals.cs" />
+    <Compile Include="PS3SaveEditor\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\ManageProfiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\ManageProfiles.Designer.cs">
+      <DependentUpon>ManageProfiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\ProfileChecker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\ProfileChecker.Designer.cs">
+      <DependentUpon>ProfileChecker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\Program.cs" />
+    <Compile Include="PS3SaveEditor\Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="PS3SaveEditor\Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PS3SaveEditor\PS4ProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\region.cs" />
+    <Compile Include="PS3SaveEditor\regions.cs" />
+    <Compile Include="PS3SaveEditor\ResignFilesUplaoder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\ResignFilesUplaoder.Designer.cs">
+      <DependentUpon>ResignFilesUplaoder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\Resources\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="PS3SaveEditor\RestoreBackup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\RestoreBackup.Designer.cs">
+      <DependentUpon>RestoreBackup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\RSSForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\RSSForm.Designer.cs">
+      <DependentUpon>RSSForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\save.cs" />
+    <Compile Include="PS3SaveEditor\saves.cs" />
+    <Compile Include="PS3SaveEditor\SaveUploadDownloder.Designer.cs">
+      <DependentUpon>SaveUploadDownloder.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="PS3SaveEditor\SerialValidateGG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\SerialValidateGG.Designer.cs">
+      <DependentUpon>SerialValidateGG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\ServerSaveDownloader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\ServerSaveDownloader.Designer.cs">
+      <DependentUpon>ServerSaveDownloader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\SimpleEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\SimpleEdit.Designer.cs">
+      <DependentUpon>SimpleEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\SimpleSaveUploader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\SimpleSaveUploader.Designer.cs">
+      <DependentUpon>SimpleSaveUploader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\SingleInstanceApplication.cs" />
+    <Compile Include="PS3SaveEditor\UpgradeDownloader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\UpgradeDownloader.Designer.cs">
+      <DependentUpon>UpgradeDownloader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PS3SaveEditor\USB.cs" />
+    <Compile Include="PS3SaveEditor\Util.cs" />
+    <Compile Include="PS3SaveEditor\WebClientEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PS3SaveEditor\ZipUtil.cs" />
+    <Compile Include="Rss\DBBool.cs" />
+    <Compile Include="Rss\ExceptionCollection.cs" />
+    <Compile Include="Rss\RssBlogChannel.cs" />
+    <Compile Include="Rss\RssCategory.cs" />
+    <Compile Include="Rss\RssCategoryCollection.cs" />
+    <Compile Include="Rss\RssChannel.cs" />
+    <Compile Include="Rss\RssChannelCollection.cs" />
+    <Compile Include="Rss\RssCloud.cs" />
+    <Compile Include="Rss\RssCloudProtocol.cs" />
+    <Compile Include="Rss\RssCreativeCommons.cs" />
+    <Compile Include="Rss\RssDefault.cs" />
+    <Compile Include="Rss\RssElement.cs" />
+    <Compile Include="Rss\RssEnclosure.cs" />
+    <Compile Include="Rss\RssFeed.cs" />
+    <Compile Include="Rss\RssFeedCollection.cs" />
+    <Compile Include="Rss\RssGuid.cs" />
+    <Compile Include="Rss\RssImage.cs" />
+    <Compile Include="Rss\RssItem.cs" />
+    <Compile Include="Rss\RssItemCollection.cs" />
+    <Compile Include="Rss\RssModule.cs" />
+    <Compile Include="Rss\RssModuleCollection.cs" />
+    <Compile Include="Rss\RssModuleItem.cs" />
+    <Compile Include="Rss\RssModuleItemCollection.cs" />
+    <Compile Include="Rss\RssModuleItemCollectionCollection.cs" />
+    <Compile Include="Rss\RssPhotoAlbum.cs" />
+    <Compile Include="Rss\RssPhotoAlbumCategories.cs" />
+    <Compile Include="Rss\RssPhotoAlbumCategory.cs" />
+    <Compile Include="Rss\RssPhotoAlbumCategoryPhoto.cs" />
+    <Compile Include="Rss\RssPhotoAlbumCategoryPhotoPeople.cs" />
+    <Compile Include="Rss\RssPhotoAlbumCategoryPhotos.cs" />
+    <Compile Include="Rss\RssReader.cs" />
+    <Compile Include="Rss\RssSource.cs" />
+    <Compile Include="Rss\RssTextInput.cs" />
+    <Compile Include="Rss\RssVersion.cs" />
+    <Compile Include="Rss\RssWriter.cs" />
+    <Compile Include="Rss\SecurityAction.cs" />
+    <Compile Include="Rss\SecurityPermissionAttribute.cs" />
+    <Compile Include="Rss\Serializable.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Be\Windows\Forms\HexBox.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>HexBox.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\CustomVScrollbar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CustomVScrollbar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DGDev\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\AddCode.resx">
+      <DependentUpon>AddCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\AdvancedEdit.resx">
+      <DependentUpon>AdvancedEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\AdvancedSaveUploaderForEncrypt.resx">
+      <DependentUpon>AdvancedSaveUploaderForEncrypt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\CancelPSNIDs.resx">
+      <DependentUpon>CancelPSNIDs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\ChooseBackup.resx">
+      <DependentUpon>ChooseBackup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\CustomScrollbar\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\DiffResults.resx">
+      <DependentUpon>DiffResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\GameListDownloader.resx">
+      <DependentUpon>GameListDownloader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\Goto.resx">
+      <DependentUpon>Goto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\ManageProfiles.resx">
+      <DependentUpon>ManageProfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\ProfileChecker.resx">
+      <DependentUpon>ProfileChecker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\ResignFilesUplaoder.resx">
+      <DependentUpon>ResignFilesUplaoder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\Resources\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\RestoreBackup.resx">
+      <DependentUpon>RestoreBackup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\RSSForm.resx">
+      <DependentUpon>RSSForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\SaveUploadDownloder.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SaveUploadDownloder.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\SerialValidateGG.resx">
+      <DependentUpon>SerialValidateGG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\ServerSaveDownloader.resx">
+      <DependentUpon>ServerSaveDownloader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\SimpleEdit.resx">
+      <DependentUpon>SimpleEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\SimpleSaveUploader.resx">
+      <DependentUpon>SimpleSaveUploader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PS3SaveEditor\UpgradeDownloader.resx">
+      <DependentUpon>UpgradeDownloader.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+    <None Include="PS3SaveEditor\Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
